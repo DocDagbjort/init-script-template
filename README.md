@@ -5,6 +5,7 @@ This script allows the mochimo node to start automatically on boot as a service,
 
 It's just a fork of 'fhd/init-script-template' with the blank values populated and a couple of compatibility tweaks.
 
+
 Assumptions
 -----------
 
