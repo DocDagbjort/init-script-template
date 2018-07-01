@@ -1,3 +1,63 @@
+Linux Mochimo Auto Start/Stop Script
+------------------------------------
+
+This script allows the mochimo node to start automatically on boot as a service, and to shut down cleanly if the system is rebooted or shut down.
+
+It's just a fork of fhd/init-script-template with the blank values populated and a couple of compatibility tweaks.
+
+Assumptions
+-----------
+
+It assumes you've created a user called 'cpuminer' on your Linux machine and have installed the mochimo software at:
+
+/home/cpuminer/mochimo/mochi/bin
+
+It also assumes you want to run with the '-s250000' flag set to cause the mochimo listener to spend more time sleeping, and less time listening (with the aim of maximising mining time).
+
+Only tested on Ubuntu 16.04.
+
+Installation
+------------
+
+Copy the 'mochimo' file to:
+
+/etc/init.d/
+
+Make any changes you require to the 'dir', 'cmd' and 'user' fields (in case you're running mochimo as a different user, or from a different path).
+
+Run:
+
+update-rc.d mochimo defaults
+
+Usage
+-----
+
+To start manually:
+
+service mochimo start
+
+To stop the node:
+
+service mochimo stop
+
+The 'start' and 'stop' will obviously happen automatically on boot / shutdown of the Linux system.
+
+Watching the Logs
+-----------------
+
+Output from mochimo will now be logged in:
+
+/var/log/mochimo.log
+
+So, you can watch the progresso of the node 'live' with:
+
+tail -f /var/log/mochimo.log
+
+for example.
+
+Original readme rrom fhd/init-script-template included below 
+------------------------------------------------------------
+
 System V init script template
 =============================
 
