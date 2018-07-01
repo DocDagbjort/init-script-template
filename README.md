@@ -1,9 +1,9 @@
 Linux Mochimo Auto Start/Stop Script
 ------------------------------------
 
-This script allows the mochimo node to start automatically on boot as a service, and to shut down cleanly if the system is rebooted or shut down.
+This script allows the mochimo (https://github.com/mochimodev/mochimo) node to start automatically on boot as a service, and to shut down cleanly if the system is rebooted or shut down.
 
-It's just a fork of 'fhd/init-script-template' with the blank values populated and a couple of compatibility tweaks.
+It's just a fork of https://github.com/fhd/init-script-template with the blank values populated and a couple of compatibility tweaks.
 
 
 Assumptions
