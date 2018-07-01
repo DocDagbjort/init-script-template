@@ -15,10 +15,9 @@ It assumes you've created a user called 'cpuminer' on your Linux machine and hav
 
 It also assumes you want to run with the '-s250000' flag set to cause the mochimo listener to spend more time sleeping, and less time listening (with the aim of maximising mining time).
 
-Tested only on Ubuntu 16.04, but should work on any System V compatible Linux distribution.
-
 It also assumes that you've completed the initial start of mochimo and have shut it down cleanly from its monitor (i.e. so that it can be restarted with the 'resume' command).
 
+Tested only on Ubuntu 16.04, but should work on any System V compatible Linux distribution.
 
 Installation
 ------------
