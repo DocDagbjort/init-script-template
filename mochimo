@@ -1,6 +1,6 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides:
+# Provides: mochimo
 # Required-Start:    $remote_fs $syslog
 # Required-Stop:     $remote_fs $syslog
 # Default-Start:     2 3 4 5
@@ -9,17 +9,26 @@
 # Description:       Enable service provided by daemon.
 ### END INIT INFO
 
-dir=""
-cmd=""
-user=""
+dir="/home/cpuminer/mochimo/mochi/bin"
+cmd="./resume d -s250000"
+user="cpuminer"
 
-name=`basename $0`
+name="mochimo"
 pid_file="/var/run/$name.pid"
 stdout_log="/var/log/$name.log"
 stderr_log="/var/log/$name.err"
 
 get_pid() {
     cat "$pid_file"
+}
+
+get_miner_pid() {
+#Dagbjort
+#For mochimo, need to kill the child of the child process rather than the parent
+    PARENT=`get_pid`
+    CHILD=`pgrep -P $PARENT`
+    CHILD=`pgrep -P $CHILD`
+    echo "$CHILD"
 }
 
 is_running() {
@@ -39,6 +48,9 @@ case "$1" in
             sudo -u "$user" $cmd >> "$stdout_log" 2>> "$stderr_log" &
         fi
         echo $! > "$pid_file"
+        echo `get_pid`
+        echo "Actual PID:"
+	echo `get_miner_pid`
         if ! is_running; then
             echo "Unable to start, see $stdout_log and $stderr_log"
             exit 1
@@ -48,7 +60,9 @@ case "$1" in
     stop)
     if is_running; then
         echo -n "Stopping $name.."
-        kill `get_pid`
+        #Dagbjort
+	    #Use the child of child process id instead
+        kill `get_miner_pid`
         for i in 1 2 3 4 5 6 7 8 9 10
         # for i in `seq 10`
         do
