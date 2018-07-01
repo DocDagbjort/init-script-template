@@ -10,35 +10,39 @@ Assumptions
 
 It assumes you've created a user called 'cpuminer' on your Linux machine and have installed the mochimo software at:
 
-/home/cpuminer/mochimo/mochi/bin
+    /home/cpuminer/mochimo/mochi/bin
 
 It also assumes you want to run with the '-s250000' flag set to cause the mochimo listener to spend more time sleeping, and less time listening (with the aim of maximising mining time).
 
-Only tested on Ubuntu 16.04.
+Tested only on Ubuntu 16.04, but should work on any System V compatible Linux distribution.
 
 Installation
 ------------
 
 Copy the 'mochimo' file to:
 
-/etc/init.d/
+    /etc/init.d/
 
 Make any changes you require to the 'dir', 'cmd' and 'user' fields (in case you're running mochimo as a different user, or from a different path).
 
-Run:
+Ensure the file is executable:
 
-update-rc.d mochimo defaults
+    chmod 755 /etc/init.d/mochimo
+
+Then run:
+
+    update-rc.d mochimo defaults
 
 Usage
 -----
 
 To start manually:
 
-service mochimo start
+    service mochimo start
 
 To stop the node:
 
-service mochimo stop
+    service mochimo stop
 
 The 'start' and 'stop' will obviously happen automatically on boot / shutdown of the Linux system.
 
@@ -47,11 +51,11 @@ Watching the Logs
 
 Output from mochimo will now be logged in:
 
-/var/log/mochimo.log
+    /var/log/mochimo.log
 
 So, you can watch the progresso of the node 'live' with:
 
-tail -f /var/log/mochimo.log
+    tail -f /var/log/mochimo.log
 
 for example.
 
