@@ -58,7 +58,7 @@ Output from mochimo will now be logged in:
 
     /var/log/mochimo.log
 
-So, you can watch the progresso of the node 'live' with:
+So, you can watch the progress of the node 'live' with:
 
     tail -f /var/log/mochimo.log
 
